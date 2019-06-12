@@ -29,11 +29,17 @@
 [5](#5)
 
 
-[](#) \
-[2](#2)
-[3](#3)
-[4](#4)
-[5](#5)
+[React](#react) \
+[1](#react-1)
+[2](#react-2)
+[3](#react-3)
+[4](#react-4)
+[5](#react-5)
+[6](#react-6)
+[7](#react-7)
+[8](#react-8)
+[9](#react-9)
+[10](#react-10)
 ---
 ---
 
@@ -417,12 +423,118 @@ An object delegates to the prototype object to inherit properties and methods of
 #### Explanation
 
 ---
-##
-### 1
+## React
+### React 1
+Which is the following is true of React component's state?
+
+#### Answer
+Component state should only be changed using the ```setState``` method. 
+
+Functional components cannot have React state.
+#### Explanation
+State is designed to hold values which mutate, and should only change via the setState method because doing otherwise can cause unexpected side-affects. Functional components, by definition, do not have state, and an attribute-like syntax is not used in state.
+
+
+
+### React 2
+Which of the following is true of React props?
+
+#### Answer
+React props represent the unchanging values necessary to render a component.
+
+The props object is defined in the parent component's JSX using attribute-like syntax.
+#### Explanation
+Props are passed down between parent and child components, and state is managed by each component indepently. Props should never be changed but state is meant to be mutated.
+The setProps method is deprecated and props are not meant to be mutated, but should be passed down from parent to child via an attribute-like syntax. Functional components can certainly have React props.
+
+#### Further resources
+[Prop vs state](#https://flaviocopes.com/react-state-vs-props/)
+
+### React 3
+Assume the React and ReactDOM libraries, along with a div with the id "app", exist in our application. After the following code runs, what text be displayed in the browser?
 ```javascript {.line-numbers}
+const MyComponent = ({name}) => (
+<div>{name}</div>
+)
+
+ReactDOM.render(
+<MyComponent name="Hans" />,
+document.getElementById('app')
+)
 ```
 #### Answer
+Hans
 #### Explanation
+When the MyComponent component is rendered on the page, it is passed a prop with the value of 'name'. Name is then passed in and encased in {} to indicate that 'name' is a parameter, rather than a string. Thus it renders the value of name, which in this case is Hans.
+
+### React 4
+Assume the React and ReactDOM libraries, along with a div with the id "app", exist in our application. After the following code runs, what text be displayed in the browser?
+```javascript {.line-numbers}
+const MyComponent = ({name}) => (
+<div> name </div>
+)
+
+ReactDOM.render(
+<MyComponent name="Hans" />,
+document.getElementByID('app')
+)
+```
+#### Answer
+name
+#### Explanation
+When the MyComponent component is rendered on the page, it is passed a prop with the value of 'name'. Unlike the previous question, however, in the div returned from MyComponent, there are no {} around name, thus it is treated as a string rather than a variable and rendered as 'name' rather than 'Hans'.
+
+### React 5
+Which of the following are benefits of the React virtual DOM?
+#### Answer
+The React virtual DOM will batch multiple DOM changes into one, if possible.
+
+The React virtual DOM only executes the minimum number of changes nevessary to properly render a component.
+#### Explanation
+The React virtual DOM does not compile code, but is does batch multiple changes and only executes the minimum number of changes possible, which is what makes it useful.
+
+### React 6
+What is Babel?
+#### Answer
+Babel is a Javascript compiler that takes code written in one syntax and transpiles it to another using presets. For example, code can be written in ES6 and then converted to ES5 by Babel.
+#### Explanation
+Bable is a transpiler. It is not a module bundler, that is built into ES6, is is not a Flux library, that is Redux, and it does not make Ajax requests- that is jQuery or Axios.
+
+### React 7
+Which of these is an example of a lifecycle method?
+#### Answer
+render 
+
+componentDidMount
+#### Explanation
+setState and onClick are only invoked directly, via a click or a function that invokes setState. componentDidMount and render are methods which are invoked during different parts of the React app loading on the browser.
+
+### React 8
+Component A is the parent of component B. When component B is clicked on, it needs to update state on component A. How can it do this?
+#### Answer
+Define a function that updates state on component A, pass the function as a prop to component B, and invoke the function when B is clicked on.
+#### Explanation
+Child components do not pass state up to their parents, state is only ever passed down. Functions, even ones that are passed down, cannot pass state to a parent component. Defining a higher-level component that is parent to A would be redundant, since A already holds state, and A would not be able to pass state up to a higher component. Instead one must define a function in A that updates state in A, pass it to B, and then invoke the passed-along function to update state in A.
+
+### React 9
+Which of the following statements(s) are true of state?
+#### Answer
+State should be held at the top-most component that needs access to it.
+
+Components mangage their own state.
+
+Initial values can be set for state.
+
+State can be passed from parent components to child components as props.
+#### Explanation
+All are true. State cannot be passed back up so it should be held at the highest-level component, but also it should be no higher than it needs to be otherwise you're passing a lot of props. Components manage their own state and components cannot mutate another components state without a function being passed down from one component to the next. State is passed from parent to child via props.
+
+### React 10
+Props should never be mutated.
+#### Answer
+True
+#### Explanation
+Props should not be mutated because this messes with the one source of truth. Only state should be mutated.
 
 ---
 ##
