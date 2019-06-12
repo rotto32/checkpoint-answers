@@ -40,6 +40,7 @@
 [8](#react-8)
 [9](#react-9)
 [10](#react-10)
+[React additional resources](#react-additional-resources)
 ---
 ---
 
@@ -425,7 +426,7 @@ An object delegates to the prototype object to inherit properties and methods of
 ---
 ## React
 ### React 1
-Which is the following is true of React component's state?
+Which of the following is true of React component's state?
 
 #### Answer
 Component state should only be changed using the ```setState``` method. 
@@ -535,6 +536,9 @@ Props should never be mutated.
 True
 #### Explanation
 Props should not be mutated because this messes with the one source of truth. Only state should be mutated.
+
+### React additional resources
+[Thinking in React](#https://reactjs.org/docs/thinking-in-react.html)
 
 ---
 ##
